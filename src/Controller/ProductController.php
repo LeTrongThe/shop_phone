@@ -57,12 +57,12 @@ class ProductController extends AbstractController
         if ($form->isSubmitted() && $form->isValid()) {
             $imageFile = $form->get('image')->getData();
              if($imageFile){
-                $newFliename = uniqid() . '.' . $imageFile->guessExtrension();
+                $newFilename = uniqid() . '.' . $imageFile->guessExtension();
                 $imageFile->move(
                     $this->getParameter('product_images_directory'),
-                    $newFliename
+                    $newFilename
                 );
-                $product->setImage($newFliename);
+                $product->setImage($newFilename);
              }
 
             $productRepository->add($product, true);
