@@ -55,8 +55,18 @@ class ProductController extends AbstractController
         $form->handleRequest($request);
 
         if ($form->isSubmitted() && $form->isValid()) {
-            $productRepository->save($product, true);
+            $imageFile = $form->get('image')->getData();
+             if($imageFile){
+                $newFliename = uniqid() . '.' . $imageFile->guessExtrension();
+                $imageFile->move(
+                    $this->getParameter('product_images_directory'),
+                    $newFliename
+                );
+                $product->setImage($newFliename);
+             }
 
+            $productRepository->add($product, true);
+            
             return $this->redirectToRoute('app_product_index', [], Response::HTTP_SEE_OTHER);
         }
 
