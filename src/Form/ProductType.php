@@ -16,7 +16,7 @@ class ProductType extends AbstractType
         $builder
             ->add('name')
             ->add('price')
-            ->add('imageFlie', FileType::class, [
+            ->add('image', FileType::class, [
                 'label' => 'Image',
                 'mapped' => false,
                 'required' => false,
