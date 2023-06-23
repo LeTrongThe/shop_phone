@@ -187,7 +187,9 @@
                         <h6 class="mb-0">Recent Salse</h6>
                         <a href="">Show All</a>
                     </div>
-                    <div class="table-responsive">
+
+                    {% block body %}{% endblock %}
+                    {# <div class="table-responsive">
                         <table class="table text-start align-middle table-bordered table-hover mb-0">
                             <thead>
                                 <tr class="text-white">
@@ -248,7 +250,7 @@
                                 </tr>
                             </tbody>
                         </table>
-                    </div>
+                    </div> #}
                 </div>
             </div>
             <!-- Recent Sales End -->
