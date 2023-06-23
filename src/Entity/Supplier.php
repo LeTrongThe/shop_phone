@@ -21,7 +21,7 @@ class Supplier
     #[ORM\Column(length: 255)]
     private ?string $address = null;
 
-    #[ORM\OneToMany(mappedBy: 'supplier', targetEntity: product::class)]
+    #[ORM\OneToMany(mappedBy: 'supplier', targetEntity: Product::class)]
     private Collection $pro;
 
     public function __construct()
@@ -66,7 +66,7 @@ class Supplier
         return $this->pro;
     }
 
-    public function addPro(product $pro): static
+    public function addPro(Product $pro): static
     {
         if (!$this->pro->contains($pro)) {
             $this->pro->add($pro);
@@ -76,7 +76,7 @@ class Supplier
         return $this;
     }
 
-    public function removePro(product $pro): static
+    public function removePro(Product $pro): static
     {
         if ($this->pro->removeElement($pro)) {
             // set the owning side to null (unless already changed)
@@ -86,5 +86,8 @@ class Supplier
         }
 
         return $this;
+    }
+    public function __toString() {
+        return $this->name;
     }
 }
