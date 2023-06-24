@@ -20,6 +20,7 @@ class Category
 
     #[ORM\Column(length: 255)]
     private ?string $description = null;
+    
 
     #[ORM\OneToMany(mappedBy: 'cate', targetEntity: Product::class)]
     private Collection $pro;

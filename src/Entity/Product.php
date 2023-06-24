@@ -34,6 +34,10 @@ class Product
     #[ORM\ManyToOne(inversedBy: 'pro')]
     private ?Supplier $supp = null;
 
+    #[ORM\ManyToOne(inversedBy: 'pro')]
+    private ?Brand $brand = null;
+    
+
     public function getId(): ?int
     {
         return $this->id;
@@ -119,6 +123,18 @@ class Product
     public function setSupp(?Supplier $supp): static
     {
         $this->supp = $supp;
+
+        return $this;
+    }
+
+    public function getBrand(): ?Brand
+    {
+        return $this->brand;
+    }
+
+    public function setBrand(?Brand $brand): static
+    {
+        $this->brand = $brand;
 
         return $this;
     }

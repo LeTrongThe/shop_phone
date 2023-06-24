@@ -1,55 +1,50 @@
 {% extends 'admine.html.twig' %}
 
+{# templates/product/index.html.twig #}
+
+
 {% block title %}Product index{% endblock %}
 
 {% block body %}
-    </table>
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-6">
+                <h1 class="display-3">Product index</h1>
+                <p class="lead">This is a simple example of a product index page built with bootstrap 5.</p>
+            </div>
+            <div class="col-lg-6">
+                <img src="{{ asset('images/product.jpg') }}" alt="Product image" class="img-fluid">
+            </div>
+        </div>
 
-    <a href="{{ path('app_product_new') }}">Create new</a>
-
-
-            <div class="container-fluid pt-4 px-4">
-                <div class="bg-secondary text-center rounded p-4">
-                    <div class="d-flex align-items-center justify-content-between mb-4">
-                        <h6 class="mb-0">Recent Salse</h6>
-                        <a href="">Show All</a>
-                    </div>
-                    <div class="table-responsive">
-                        <table class="table text-start align-middle table-bordered table-hover mb-0">
-                            <thead>
-                                <tr class="text-white">
-                                    <th scope="col">ID</th>
-                                    <th scope="col">Name</th>
-                                    <th scope="col">Category</th>
-                                    <th scope="col">Price $</th>
-                                    <th scope="col">Quantily</th>
-                                    <th scope="col">Description</th>
-                                    <th scope="col">Image</th>
-                                    <th scope="col">Action</th>
-                                </tr>
-                            </thead>
-                            <tbody>
-                                    {% for product in products %}
-                                <tr>
-                                    <td>{{ product.id }}</td>
-                                    <td>{{ product.name }}</td>
-                                    <td>{{ product.cate }}</td>
-                                    <td>{{ product.price }}$</td>
-                                    <td>{{ product.quantily }}</td>
-                                    <td>{{ product.description }}</td>
-                                <td><img src="{{ asset('upload/images/' ~ product.image)}}" width="70" height="70"></td><td>
-                     <a class="btn btn-sm btn-primary" href="{{ path('app_product_show', {'id': product.id}) }}">show</a>
-                    <a class="btn btn-sm btn-primary" href="{{ path('app_product_edit', {'id': product.id}) }}">edit</a></td>
-                                </tr>
-                                        {% else %}
-            <tr>
-                <td colspan="7">no records found</td>
-            </tr>
-        {% endfor %}
-                            </tbody>
-                        </table>
+        <div class="row mt-4">
+            {% for product in products %}
+                <div class="col-md-4">
+                    <div class="card mb-4 shadow-sm">
+                        <img src="{{ asset('/upload/images/' ~ product.image) }}" alt="{{ product.name }}" class="card-img-top">
+                        <div class="card-body">
+                            <h5 class="card-title">{{ product.name }}</h5>
+                            <p class="card-text">{{ product.description }}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <span class="text-muted">{{ product.price }}</span>
+                                <span class="text-muted">{{ product.quantily }} in stock</span>
+                                <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                            </div>
+                        </div>
                     </div>
                 </div>
-            </div>
+            {% else %}
+                <div class="col-md-12">
+                    <p class="text-center">No products found.</p>
+                </div>
+            {% endfor %}
+        </div>
 
-            {% endblock %}
+        <a href="{{ path('app_product_new') }}" class="btn btn-primary">Create new</a>
+    </div>
+{% endblock %}
+
+
+
+
+
