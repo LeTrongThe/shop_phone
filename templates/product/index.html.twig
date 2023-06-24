@@ -1,34 +1,37 @@
 {% extends 'admine.html.twig' %}
 
-{# templates/product/index.html.twig #}
-
 
 {% block title %}Product index{% endblock %}
+
+{% block stylesheets %}
+    {{ parent() }}
+    <style>
+        .product-card {
+            border: 2px solid gold;
+        }
+    </style>
+{% endblock %}
 
 {% block body %}
     <div class="container">
         <div class="row">
             <div class="col-lg-6">
                 <h1 class="display-3">Product index</h1>
-                <p class="lead">This is a simple example of a product index page built with bootstrap 5.</p>
-            </div>
-            <div class="col-lg-6">
-                <img src="{{ asset('images/product.jpg') }}" alt="Product image" class="img-fluid">
             </div>
         </div>
 
         <div class="row mt-4">
             {% for product in products %}
                 <div class="col-md-4">
-                    <div class="card mb-4 shadow-sm">
+                    <div class="card mb-4 shadow-sm product-card">
                         <img src="{{ asset('/upload/images/' ~ product.image) }}" alt="{{ product.name }}" class="card-img-top">
                         <div class="card-body">
-                            <h5 class="card-title">{{ product.name }}</h5>
+                            <h5 class="card-title"><i class="bi bi-box"></i> {{ product.name }}</h5>
                             <p class="card-text">{{ product.description }}</p>
                             <div class="d-flex justify-content-between align-items-center">
-                                <span class="text-muted">{{ product.price }}</span>
-                                <span class="text-muted">{{ product.quantily }} in stock</span>
-                                <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-sm btn-outline-secondary">View</a>
+                                <span class="text-muted"><i class="bi bi-cash"></i> {{ product.price }}</span>
+                                <span class="text-muted"><i class="bi bi-cart"></i> {{ product.quantily }} in stock</span>
+                                <a href="{{ path('app_product_show', {'id': product.id}) }}" class="btn btn-sm btn-outline-secondary"><i class="bi bi-eye"></i> View</a>
                             </div>
                         </div>
                     </div>
@@ -40,11 +43,7 @@
             {% endfor %}
         </div>
 
-        <a href="{{ path('app_product_new') }}" class="btn btn-primary">Create new</a>
+        <a href="{{ path('app_product_new') }}" class="btn btn-primary"><i class="bi bi-plus"></i> Create new</a>
     </div>
 {% endblock %}
-
-
-
-
 
