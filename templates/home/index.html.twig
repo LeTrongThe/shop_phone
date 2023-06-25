@@ -78,14 +78,22 @@ https://templatemo.com/tm-583-festava-live
                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="#section_3">Prodcut</a>
                         </li>
+
+                         {% if app.user %}
                         <li class="nav-item">
                             <a class="nav-link click-scroll" href="product">Manage</a>
                         </li>
-                        
+                          {% else %} 
+                          {% endif %}
 
                     </ul>
+                      {% if app.user %}
+                        <a href="{{ path('app_logout') }}" class="btn custom-btn d-lg-block d-none">{{ app.user.userIdentifier }}</a>
+                     {% else %} 
+                       <a href="/login" class="btn custom-btn d-lg-block d-none">Login</a>
+                       {% endif %}
 
-                    <a href="ticket.html" class="btn custom-btn d-lg-block d-none">Buy Ticket</a>
+                 
                 </div>
             </div>
         </nav>
