@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Entity;
-
 use App\Repository\BrandRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -26,68 +24,45 @@ class Brand
 
     public function __construct()
     {
-        $this->pro = new ArrayCollection();
-    }
-
+        $this->pro = new ArrayCollection(); }
     public function getId(): ?int
     {
-        return $this->id;
-    }
-
+        return $this->id; }
     public function getName(): ?string
     {
-        return $this->name;
-    }
-
+        return $this->name;}
     public function setName(string $name): static
     {
         $this->name = $name;
-
-        return $this;
-    }
-
+        return $this; }
     public function getAddress(): ?string
     {
-        return $this->address;
-    }
-
+        return $this->address; }
     public function setAddress(string $address): static
     {
         $this->address = $address;
-
-        return $this;
-    }
+        return $this; }
     public function __toString() {
-        return $this->name;
-    }
-
+        return $this->name; }
     /**
      * @return Collection<int, Product>
      */
     public function getPro(): Collection
     {
-        return $this->pro;
-    }
-
+        return $this->pro; }
     public function addPro(Product $pro): static
-    {
-        if (!$this->pro->contains($pro)) {
+    { if (!$this->pro->contains($pro)) {
             $this->pro->add($pro);
             $pro->setBrand($this);
         }
-
-        return $this;
-    }
-
+        return $this; }
     public function removePro(Product $pro): static
-    {
-        if ($this->pro->removeElement($pro)) {
+    { if ($this->pro->removeElement($pro)) {
             // set the owning side to null (unless already changed)
             if ($pro->getBrand() === $this) {
                 $pro->setBrand(null);
             }
         }
-
         return $this;
     }
 }

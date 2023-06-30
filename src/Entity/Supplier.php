@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Entity;
-
 use App\Repository\SupplierRepository;
 use Doctrine\Common\Collections\ArrayCollection;
 use Doctrine\Common\Collections\Collection;
@@ -28,9 +26,6 @@ class Supplier
     {
         $this->pro = new ArrayCollection();
     }
-
-   
-
     public function getId(): ?int
     {
         return $this->id;

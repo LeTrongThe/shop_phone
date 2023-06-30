@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Entity;
-
 use App\Repository\ProductRepository;
 use Doctrine\ORM\Mapping as ORM;
 
@@ -75,7 +73,6 @@ class Product
     public function setQuantily(int $quantily): static
     {
         $this->quantily = $quantily;
-
         return $this;
     }
 
@@ -99,7 +96,6 @@ class Product
     public function setImage(string $image): static
     {
         $this->image = $image;
-
         return $this;
     }
 

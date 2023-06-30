@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Entity;
-
 use App\Repository\UserRepository;
 use Doctrine\ORM\Mapping as ORM;
 use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
@@ -33,19 +31,15 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->id;
     }
-
     public function getEmail(): ?string
     {
         return $this->email;
     }
-
     public function setEmail(string $email): static
     {
         $this->email = $email;
-
         return $this;
     }
-
     /**
      * A visual identifier that represents this user.
      *
@@ -55,7 +49,6 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return (string) $this->email;
     }
-
     /**
      * @see UserInterface
      */
@@ -64,17 +57,13 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
         $roles = $this->roles;
         // guarantee every user at least has ROLE_USER
         $roles[] = 'ROLE_USER';
-
         return array_unique($roles);
     }
-
     public function setRoles(array $roles): static
     {
         $this->roles = $roles;
-
         return $this;
     }
-
     /**
      * @see PasswordAuthenticatedUserInterface
      */
@@ -82,14 +71,11 @@ class User implements UserInterface, PasswordAuthenticatedUserInterface
     {
         return $this->password;
     }
-
     public function setPassword(string $password): static
     {
         $this->password = $password;
-
         return $this;
     }
-
     /**
      * @see UserInterface
      */

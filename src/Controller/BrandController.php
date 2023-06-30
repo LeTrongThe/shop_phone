@@ -1,7 +1,5 @@
 <?php
-
 namespace App\Controller;
-
 use App\Entity\Brand;
 use App\Form\BrandType;
 use App\Repository\BrandRepository;
@@ -27,13 +25,10 @@ class BrandController extends AbstractController
         $brand = new Brand();
         $form = $this->createForm(BrandType::class, $brand);
         $form->handleRequest($request);
-
         if ($form->isSubmitted() && $form->isValid()) {
             $brandRepository->save($brand, true);
-
             return $this->redirectToRoute('app_brand_index', [], Response::HTTP_SEE_OTHER);
         }
-
         return $this->renderForm('brand/new.html.twig', [
             'brand' => $brand,
             'form' => $form,
